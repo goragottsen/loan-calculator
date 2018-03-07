@@ -9,7 +9,9 @@ public partial class Report : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //getting data from the previous page
+        if (PreviousPage != null)
+        {
+            //getting data from the previous page
             double totalAssets = 0;
             TextBox asset1 = (TextBox)PreviousPage.FindControl("txtgross");
             TextBox asset2 = (TextBox)PreviousPage.FindControl("txtassetsvalue");
@@ -41,6 +43,7 @@ public partial class Report : System.Web.UI.Page
             {
                 lblResult.Text = "Denied";
             }
+        }
     }
     protected bool checkApproval(double assets, double liabilities)
     {
